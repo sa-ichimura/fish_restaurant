@@ -38,4 +38,25 @@ Build laravel development environment with docker-compose.
 
 - Base image
   - [mysql](https://hub.docker.com/_/mysql):8.0
+
 # fish_restaurant
+## コンテナに入る
+- make app
+- make web
+- make db
+
+## マイグレーション実行コマンド
+### php artisan migrate
+- [mac] $ make migrate
+
+### php artisan migrate:fresh
+- [mac] $ make fresh
+
+### php artisan db:seed
+- [mac] $ make seed
+
+## テスト実行
+- [mac] $ make test
+
+## MySQL接続
+- [mac] $ make mysql
