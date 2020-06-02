@@ -82,3 +82,10 @@ ide-helper:
 	docker-compose exec app php artisan ide-helper:generate
 	docker-compose exec app php artisan ide-helper:meta
 	docker-compose exec app php artisan ide-helper:models --nowrite
+migrate:
+	docker-compose exec app php artisan migrate
+migrate-rollback:
+	docker-compose exec app php artisan migrate:rollback
+migrate-fresh:
+	docker-compose exec app php artisan migrate:fresh
+
