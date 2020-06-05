@@ -22,8 +22,10 @@ class CreateFoodComponentsTable extends Migration
             $table->string('fiber')->comment('繊維');
             $table->string('mineral')->comment('ミネラル');
             $table->string('moisture')->comment('水分');
+            $table->string('rin')->comment('リン');
             $table->string('other')->comment('その他');        
             $table->timestamps();
+            $table->index('food_id');
         });
     }
 

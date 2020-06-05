@@ -21,8 +21,9 @@ class CreateFoodsTable extends Migration
             $table->string('volume')->comment('量');
             $table->string('size')->commit('サイズ');
             $table->string('material')->comment('材料');
-            $table->string('type')->commit('タイプ');
-            $table->string('feature')->commit('特徴');
+            $table->string('type')->commet('タイプ');
+            $table->text('feature')->commet('特徴');
+            $table->string('target')->comment('対象の生き物');
             $table->timestamps();
         });
     }

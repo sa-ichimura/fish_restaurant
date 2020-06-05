@@ -62,6 +62,7 @@
                 margin-bottom: 30px;
             }
         </style>
+         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -78,6 +79,9 @@
                     @endauth
                 </div>
             @endif
+            <div id='app'>
+                <example-component></example-component>
+            </div>
 
             <div class="content">
                 <div class="title m-b-md">
