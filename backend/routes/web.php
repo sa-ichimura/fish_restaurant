@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/test',function(){
     return view ('test');
 });
+
+Route::get('ajax/food', 'Ajax\FoodController@index');
+Route::get('food', 'FoodController@index');
+Route::get('food/search','FoodContoroller@search');

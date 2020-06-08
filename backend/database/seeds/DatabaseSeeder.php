@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,10 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
         $this->call(FoodsTableSeeder::class);
         $this->call(FoodComponentsTableSeeder::class);
+        $this->call(FishCategoriesTableSeeder::class);
+        $this->call(FoodCategoriesTableSeeder::class);
+
+        
 
     }
 }

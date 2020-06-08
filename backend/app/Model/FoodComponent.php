@@ -9,6 +9,6 @@ class FoodComponent extends Model
     //
     public function food()
     {
-        return $this->hasOne('App\Http\Model\Food');
+        return $this->hasOne('App\Model\Food');
     }
 }
