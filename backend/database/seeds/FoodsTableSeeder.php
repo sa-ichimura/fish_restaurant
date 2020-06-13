@@ -13,7 +13,7 @@ class FoodsTableSeeder extends Seeder
     public function run()
     {
         $now = Carbon::now();
-        DB::table('food_components')->delete();
+        DB::table('foods')->delete();
         DB::table('foods')->insert([
                 'id'=>'1',
                 'code'=>'236622',
