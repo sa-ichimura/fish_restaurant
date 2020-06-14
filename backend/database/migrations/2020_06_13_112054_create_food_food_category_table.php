@@ -13,7 +13,7 @@ class CreateFoodFoodCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('food_food_categories', function (Blueprint $table) {
+        Schema::create('food_food_category', function (Blueprint $table) {
             $table->id();
             $table->foreignId('food_category_id')->index();
             $table->foreignId('food_id')->index();
