@@ -48,15 +48,20 @@
 
             </nav>
     </header>
-
-    <form class="form-inline">
-        <div class="form-search-center">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </div>
-    </form>
-    @yield('content')
-
+    <div id="wrapper">
+        
+        <form class="form-inline">
+            <div class="form-search-center">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </form>
+        <div id="continer">
+        
+        @yield('content')
+    </div>
+        
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 

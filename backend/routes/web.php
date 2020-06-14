@@ -23,4 +23,5 @@ Route::get('/test',function(){
 */
 
 Route::get('/', 'FoodController@index');
-Route::get('/foodComponent', 'FoodComponentController@index')->name('foodComponent.index');
+Route::get('/category', 'FoodCategoeyController@index')->name('category.index');
+Route::get('/component', 'FoodComponentController@index')->name('component.index');
