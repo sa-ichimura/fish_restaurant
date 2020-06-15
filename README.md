@@ -60,3 +60,8 @@ Build laravel development environment with docker-compose.
 
 ## MySQL接続
 - [mac] $ make mysql
+
+## 環境構築時にインストールしたいライブラリがある場合
+makefileのinitに追記を行う
+npmでインストールするものに関しては速度を上げたいので、
+yarnで記述する

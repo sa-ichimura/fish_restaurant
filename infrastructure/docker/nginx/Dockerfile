@@ -11,5 +11,9 @@ COPY --from=node /usr/local/bin /usr/local/bin
 COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /opt /opt
 COPY ./default.conf /etc/nginx/conf.d/default.conf
+RUN npm install
+RUN npm install --save vue-chartjs
+RUN npm install --save chart.js
+
 
 WORKDIR /work/backend
