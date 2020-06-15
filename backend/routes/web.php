@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,7 +20,8 @@ Route::get('/', function () {
 Route::get('/test',function(){
     return view ('test');
 });
+*/
 
-Route::get('ajax/food', 'Ajax\FoodController@index');
-Route::get('food', 'FoodController@index');
-Route::get('food/search','FoodContoroller@search');
+Route::get('/', 'FoodController@index');
+Route::get('/category', 'FoodCategoeyController@index')->name('category.index');
+Route::get('/component', 'FoodComponentController@index')->name('component.index');

@@ -25,6 +25,7 @@ class CreateFoodsTable extends Migration
             $table->text('feature')->commet('特徴');
             $table->string('target')->comment('対象の生き物');
             $table->timestamps();
+            $table->index('id');
         });
     }
 

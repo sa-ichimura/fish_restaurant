@@ -10,6 +10,11 @@ class Food extends Model
     protected $fillable=['name','feature','target'];
     public function foodComponent()
     {
-        return $this->hasOne('App\Model\FoodComponent');
+        return $this->hasOne(FoodComponent::class);
+    }
+
+    public function foodCategory()
+    {
+        return $this->belongsToMany(FoodCategory::class);
     }
 }

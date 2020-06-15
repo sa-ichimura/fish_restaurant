@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\FishCategory;
-use App\Model\foodCategory;
-use App\Model\food;
+use App\Model\FoodCategory;
+
 
 
 class FoodController extends Controller
@@ -22,14 +22,5 @@ class FoodController extends Controller
                 'fishCategories'=>$fishCategories
                 ]);
     }
-    public function show()
-    {
 
-    }
-
-    public function search()
-    {
-        
-         
-    }
 }

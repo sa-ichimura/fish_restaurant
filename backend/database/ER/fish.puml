@@ -1,0 +1,56 @@
+
+@startuml 
+entity "fish_categories" {
+    + id [PK]
+    ==
+    name:varchar(255)
+    created_at:timestamp
+    updated_at:timestamp
+}
+
+entity "food_categories" {
+    + id [PK]
+    ==
+    # fish_category_id [FK(fish_categories,id)]
+    name:varchar(255)
+    created_at:timestamp
+    updated_at:timestamp
+}
+
+entity "food_components" {
+    + id [PK]
+    ==
+    # food_id [FK(foods,id)]
+    name:varchar(255)
+    protein:varchar(255)
+    fat:varchar(255)
+    fiber:varchar(255)
+    mineral:varchar(255)
+    moisture:varchar(255)
+    rin:varchar(255)
+    other:varchar(255)
+    created_at:timestamp
+    updated_at:timestamp
+
+}
+
+entity "foods" {
+    + id [PK]
+    ==
+    name:varchar(128)
+    code:varchar(255)
+    price:varchar(255)
+    name:varchar(255)
+    volume:varchar(255)
+    size:varchar(255)
+    material:varchar(255)
+    type:varchar(255)
+    feature:varchar(255)
+    target:text
+    created_at:timestamp
+    updated_at:timestamp
+}
+fish_categories--|{ food_categories
+foods ||--||food_components
+
+@enduml

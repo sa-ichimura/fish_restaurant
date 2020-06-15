@@ -11,4 +11,9 @@ class FoodCategory extends Model
     {
         return $this->belongTo(FishCategory::class);
     }
+    public function foods()
+    {
+        return $this->belongsToMany('App\Model\Food');
+    }
 }
+
