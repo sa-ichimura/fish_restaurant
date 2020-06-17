@@ -21,7 +21,8 @@ class FoodComponentController extends Controller
         dump($componentConvet);
         return view('foodComponent/index',[
             'food'=>$food,
-            'foodComponent'=>$foodComponent
+            'foodComponents'=>$foodComponent,
+            'pieDate'=>$componentConvet
         ]);
     }
 
@@ -47,8 +48,11 @@ class FoodComponentController extends Controller
     public function componentConvet(array $convets){
         foreach($convets as $convert){
             $text = trim(mb_convert_kana($convert, 'as', 'UTF-8'));
-            $utf8Delete[] = preg_replace('/[^0-9a-zA-Z-.]/', '', $text);
+            $utf8Delete[] = floatval(preg_replace('/[^0-9a-zA-Z-.]/', '', $text));
         }
+
+        $componentTotal = array_sum($utf8Delete);
+        $utf8Delete[6]=floatval(strval(100-$componentTotal));
     
         return json_encode($utf8Delete);
     }

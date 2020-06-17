@@ -10,8 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+  
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,9 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!--script-->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-    <script src="{{ asset('/js/app.js') }}"></script>
+
 </head>
 
 <body>
@@ -67,7 +64,12 @@
     </div>
         
     </div>
-
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
+    
 </body>
 
 </html>
