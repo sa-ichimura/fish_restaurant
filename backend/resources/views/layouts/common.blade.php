@@ -50,7 +50,7 @@
 
             </nav>
     </header>
-    <div id="wrapper">
+    <div id="app">
 
         <form class="form-inline">
             <div class="form-search-center">
@@ -66,9 +66,7 @@
     </div>
     
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src=" {{ mix('js/app.js') }} "></script>
     
 </body>
 

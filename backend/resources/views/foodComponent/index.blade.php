@@ -14,7 +14,7 @@
                 @foreach($foodComponents as $component)
                 <input type="hidden" name='compnent' value = '{{$component->id}}'>
                 @endforeach
-                <button type="button" class="btn btn-primary">Primary</button>
+                <button type="button" class="btn btn-primary">比較</button>
                 <button type="button" class="btn btn-primary">Primary</button>
             </form>
         </div>
@@ -23,8 +23,9 @@
 
 
     <div class="row">
-      <div class="col-sm" id="pie-circle" >
-            <piechart-component component = {{$pieDate}}></piechart-component>
+      <div class="col-sm" id="app">
+        
+            <piechart-component></piechart-component>
         </div>
       <div class="col-sm">
         <h3>材料</h3>

@@ -8,6 +8,7 @@
                     <div class="card-body">
                         I'm an example component.
                     </div>
+                    <div class="card-body">{{name}}</div>
                 </div>
             </div>
         </div>
@@ -16,8 +17,16 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        async mounted(){
+            console.log("Component");
+            const ret = await window.axios.get("/api/sample")
+            console.log(ret.data)
+            this.name=ret.data.name;
+        },
+        data(){
+            return{
+                name:window.data.name
+            }
         }
     }
 </script>
