@@ -10,8 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+  
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!--script-->
+
 </head>
 
 <body>
@@ -48,8 +50,8 @@
 
             </nav>
     </header>
-    <div id="wrapper">
-        
+    <div id="app">
+
         <form class="form-inline">
             <div class="form-search-center">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -62,9 +64,10 @@
     </div>
         
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-
+    
+    
+    <script src=" {{ mix('js/app.js') }} "></script>
+    
 </body>
 
 </html>

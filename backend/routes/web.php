@@ -12,15 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test',function(){
-    return view ('test');
-});
-*/
 
 Route::get('/', 'FoodController@index');
 Route::get('/category', 'FoodCategoeyController@index')->name('category.index');

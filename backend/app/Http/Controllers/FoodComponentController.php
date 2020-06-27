@@ -14,12 +14,17 @@ class FoodComponentController extends Controller
         
         $foodId = $request->input('food_id');
         $food = Food::find($foodId);       
-        $foodComponent = FoodComponent::where('food_id',$foodId)->get();
+        $foodComponents = FoodComponent::where('food_id',$foodId)->get();
+        foreach($foodComponents as $foodComponent){
+            $foodComponentId = $foodComponent->id;
+        }
+        
      
         return view('foodComponent/index',[
             'food'=>$food,
-            'foodComponent'=>$foodComponent
+            'foodComponents'=>$foodComponents,
+            'foodComponentId'=>$foodComponentId
+  
         ]);
     }
-
 }
