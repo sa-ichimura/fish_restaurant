@@ -24,8 +24,7 @@
 
     <div class="row">
       <div class="col-sm" id="app">
-        
-            <piechart-component></piechart-component>
+            <piechart-component :id="@json($food->id)"></piechart-component>
         </div>
       <div class="col-sm">
         <h3>材料</h3>

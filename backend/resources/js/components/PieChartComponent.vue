@@ -2,19 +2,23 @@
 //円グラフを表示するコーポネント
 import { Pie } from 'vue-chartjs'
 export default {
+  props:{
+    id:{
+      defolut:0,
+    },
+  },
    extends:Pie,
   async mounted(){
-    const ret = await window.axios.get("/api/food_component")
-    
-    this.data =[
-      ret.data.protein,
-      ret.data.fat,
-      ret.data.fiber,
-      ret.data.mineral,
-      ret.data.moisture,
-      ret.data.rin,
-      ret.data.other
-      ];
+    console.log(this.id)
+    console.log('/api/food_component/')
+    const data = {
+      id:this.id
+    }
+    const ret = await window.axios.post('/api/food_component/',data).then((ret)=>{
+                    
+                    this.data=ret.data
+                    //取得したデータをitemsに格納
+                })
     this.renderChart({
       labels: ['タンパク質','脂質','繊維','ミネラル','水分','リン','その他'],
       datasets: [{

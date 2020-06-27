@@ -11,13 +11,13 @@ class FoodComponentController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $foodComponent = FoodComponent::where('food_id',1)->get();
+        $foodComponent = FoodComponent::where('food_id',$request->id)->get();
         $data = $this->componentJson($foodComponent);
-        
         return $data;
         
     }
@@ -25,7 +25,7 @@ class FoodComponentController extends Controller
     {
         $convetArray = '';
         foreach($foodComponents as $foodComponent){
-            $convetArray= [
+           /* $convetArray= [
                 'protein'=>$foodComponent->protein,
                 'fat' => $foodComponent->fat,
                 'fiber' => $foodComponent->fiber,
@@ -33,6 +33,15 @@ class FoodComponentController extends Controller
                 'moisture' => $foodComponent->moisture,
                 'rin' => $foodComponent->rin,
                 'other' => $foodComponent->other
+            ];*/
+            $convetArray= [
+                $foodComponent->protein,
+                $foodComponent->fat,
+                $foodComponent->fiber,
+                $foodComponent->mineral,
+                $foodComponent->moisture,
+                $foodComponent->rin,
+                $foodComponent->other
             ];
         }
         return $this->componentConvet($convetArray);
