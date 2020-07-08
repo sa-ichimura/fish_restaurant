@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post("/food_component","Api\FoodComponentController@index");
+Route::post("/comparison","Api\ComparisonController@index");

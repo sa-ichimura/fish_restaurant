@@ -14,6 +14,7 @@
                 @foreach($foodComponents as $component)
                 <input type="hidden" name='compnent' value = '{{$component->id}}'>
                 @endforeach
+    
                 <button type="button" class="btn btn-primary">比較</button>
                 <button type="button" class="btn btn-primary">Primary</button>
             </form>

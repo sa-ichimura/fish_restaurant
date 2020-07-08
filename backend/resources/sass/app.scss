@@ -7,26 +7,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-$main-color: #333;
-body {
-  color: $main-color;
-}
-.form-inline{
-  .form-search-center{
-    width: 100%;
-    display: inline-block;
-    text-align:center;
-    .form-control{
-      width:50%;
-    }
-  }
-}
-.col-md-3{
-  background-color: pink;
-  .fish-category-name{
-    width:100%;
-    height:100%;
-  }
-}
 
-
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  }
+  
