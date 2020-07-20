@@ -9,8 +9,6 @@ export default {
   },
    extends:Pie,
   async mounted(){
-    console.log(this.id)
-    console.log('/api/food_component/')
     const data = {
       id:this.id
     }

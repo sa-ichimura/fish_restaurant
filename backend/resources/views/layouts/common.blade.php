@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
   
@@ -37,7 +35,7 @@
                             <a href="#" class="nav-link">HOME<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item" active="">
-                            <a href="#" class="nav-link">Features<span class="sr-only"></span></a>
+                            <a href="{{ route('comparison.index')}}" class="nav-link">比較<span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item" active="">
                             <a href="#" class="nav-link">Pricing<span class="sr-only"></span></a>
@@ -45,6 +43,19 @@
                         <li class="nav-item" active="">
                             <a href="#" class="nav-link">Disabled<span class="sr-only"></span></a>
                         </li>
+                        @if (Route::has('login'))
+                        <div class="top-right links">
+                            @auth
+                                <a href="{{ url('/home') }}">Home</a>
+                            @else
+                                <a href="{{ route('login') }}">Login</a>
+        
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
                     </ul>
                 </div>
 

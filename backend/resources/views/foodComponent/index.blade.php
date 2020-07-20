@@ -9,22 +9,26 @@
                 <h2>{{$food->name}}</h2>    
             </div>
         <div class="col-sm">
-            <form action="">
-                <input type="hidden" name='food' value = '{{$food->id}}'>
+            <example-component　v-bind:food-id="{{ $food->id }}" v-bind:user-id="{{ $userId }}" ></example-component>
+            <form action="{{ url('/component/comparison')}}" method="POST">
+                {{csrf_field() }}
+                <input type="hidden" name='food_id' value = '{{$food->id}}'>
                 @foreach($foodComponents as $component)
                 <input type="hidden" name='compnent' value = '{{$component->id}}'>
                 @endforeach
-    
-                <button type="button" class="btn btn-primary">比較</button>
-                <button type="button" class="btn btn-primary">Primary</button>
+                
+                <div><input type="submit" name="add"></div>
             </form>
+            @if(Session::has('message'))
+  メッセージ：{{ session('message') }}
+@endif
         </div>
     </div>
 
 
 
     <div class="row">
-      <div class="col-sm" id="app">
+      <div class="col-sm">
             <piechart-component :id="@json($food->id)"></piechart-component>
         </div>
       <div class="col-sm">

@@ -1,20 +1,60 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
+        <button
+            type="submit" 
+            class ="btn btn-outline-success"
+            v-bind:disabled='isPushComparison' 
+            @click='comparison'
+        >比較する
+        </button>
+        <button 
+            type="submit" 
+            class ="btn btn-outline-success"
+            v-bind:disabled='isPushNotComparison'
+            @click='notComparison'
+        >比較しない
+        </button>
 
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
+export default {
+    props:[
+        'userId',
+        'foodId'
+    ],
+  data:function(){
+    return {
+         isPushComparison : false,
+         isPushNotComparison:false,
+         return:false
+    }
+  },
+
+  methods:{
+      comparison:function(event){
+          if(event){
+                this.isPushComparison = true;
+                this.isPushNotComparison = false;
+            const ret = axios
+                .put("/api/food_component/" + this.foodId+"/"+this.userId,{
+                    userId: this.userId
+                }).then((ret)=>{}).catch(err => {
+                    this.message = err;
+                });
+          }
+      },
+      
+      notComparison:function(event){
+          if(event){
+              this.isPushComparison = false;
+              this.isPushNotComparison = true;
+              
+          }
+      }
+
+  }
+}
 
 </script>
