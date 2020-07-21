@@ -14,6 +14,7 @@ class FoodComponentController extends Controller
     public function index(Request $request)
     {
         $graphSessionFlag = '未登録';
+        $user_id = 0;
         $foodId = $request->input('food_id');
         $food = Food::find($foodId);       
         $foodComponents = FoodComponent::where('food_id',$foodId)->get();
@@ -28,7 +29,9 @@ class FoodComponentController extends Controller
         if(!isset($value[$foodId])){
             $graphSessionFlag = '登録済み';
         }
-        $user_id = Auth::id();
+        if(Auth::check()){
+            $user_id = Auth::id();
+        }
         
         return view('foodComponent/index',[
             

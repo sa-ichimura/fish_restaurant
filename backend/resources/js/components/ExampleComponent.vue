@@ -14,6 +14,7 @@
             @click='notComparison'
         >比較しない
         </button>
+          <div v-if="message === true" class="alert alert-primary" role="alert">比較リストに追加しました</div>
 
     </div>
 </template>
@@ -28,7 +29,7 @@ export default {
     return {
          isPushComparison : false,
          isPushNotComparison:false,
-         return:false
+         message:null
     }
   },
 
@@ -40,8 +41,13 @@ export default {
             const ret = axios
                 .put("/api/food_component/" + this.foodId+"/"+this.userId,{
                     userId: this.userId
-                }).then((ret)=>{}).catch(err => {
-                    this.message = err;
+                }).then((ret)=>{
+                    console.log(ret);
+                    if(ret.data.insert){
+                        this.message = true;
+                    }
+                }).catch(err => {
+                    this.message = false;
                 });
           }
       },

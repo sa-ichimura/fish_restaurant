@@ -89,14 +89,17 @@ class FoodComponentController extends Controller
      */
     public function update(Request $request,$foodId,$user_id)
     {
-        $foodComponent = Comparison::where('food_id',$foodId)->where('user_id',$user_id)->get();
-
+        $Comparison = Comparison::where('food_id',$foodId)->where('user_id',$user_id)->get();
         //データが取得できなければinsert
-       if(isset($foodComponent)){
+       if(count($Comparison) == 0){
             $comparison = new Comparison();
             $comparison->food_id = $foodId;
             $comparison->user_id=$user_id;
             $comparison->save();
+            return ['insert'=>true];
+        }else{
+            return ['insert'=>false];
+            
         }
 
     }
