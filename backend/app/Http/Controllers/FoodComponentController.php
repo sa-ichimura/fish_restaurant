@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\FoodCategory;
 use App\Model\FoodComponent;
 use App\Model\Food;
+use App\Model\Comparison;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,34 +14,34 @@ class FoodComponentController extends Controller
 {
     public function index(Request $request)
     {
-        $graphSessionFlag = '未登録';
-        $user_id = 0;
+        $comparisonComent = '0';
+        $userId = 0;
         $foodId = $request->input('food_id');
         $food = Food::find($foodId);       
         $foodComponents = FoodComponent::where('food_id',$foodId)->get();
+        
         foreach($foodComponents as $foodComponent){
             $foodComponentId = $foodComponent->id;
         }
 
         $graphData = $this->componentJson($foodComponents);
 
-        $sessionKey = 'graph';
-        $value = $request->session()->all();
-        if(!isset($value[$foodId])){
-            $graphSessionFlag = '登録済み';
-        }
         if(Auth::check()){
-            $user_id = Auth::id();
+            $userId = Auth::id();
+            $comparison = Comparison::where('user_id',$userId)->where('food_id',$foodId)->get();
+            if(count($comparison) !=0){
+                $comparisonComent = '1';
+            }
+               
         }
-        
+        dump($comparisonComent );
         return view('foodComponent/index',[
-            
             'food'=>$food,
             'foodComponents'=>$foodComponents,
             'foodComponentId'=>$foodComponentId,
             'graphData'=>$graphData,
-            'graphSessionFlag' => $graphSessionFlag,
-            'userId'=>$user_id
+            'userId'=>$userId,
+            'comparisonComent'=>$comparisonComent
         ]);
     }
 
@@ -78,48 +79,5 @@ class FoodComponentController extends Controller
 
 
 
-    public function comparison(Request $request)
-    {
-        $foodId = $request->input('food_id');
-        $food = Food::find($foodId);       
-        $foodComponents = FoodComponent::where('food_id',$foodId)->get();
-        $componentArray =[];
-        foreach($foodComponents as $foodComponent){
-            $foodComponentId = $foodComponent->id;
-            $componentArray = [
-                $foodComponentId,
-                $foodComponent->protein,
-                $foodComponent->fat,
-                $foodComponent->fiber,
-                $foodComponent->mineral,
-                $foodComponent->moisture,
-                $foodComponent->rin,
-                $foodComponent->other
-            ];
 
-            $getComponentSessions=$request->session()->get('food/comparsion');
-            if(isset($getComponentSessions)){
-                dump($request->session()->get('food/comparsion'));
-                foreach($getComponentSessions as $getComponentSession){
-                    if($getComponentSession[0] != $foodComponentId){
-                        $request->session()->push('food/comparsion', $componentArray);
-                        $request->session()->flash('message', '登録したでござる');
-                    }else{
-                        $request->session()->flash('message', 'すでに登録済みでござる');
-                    }
-                }
-            }else{
-                $request->session()->push('food/comparsion', $componentArray);
-                $request->session()->flash('message', '登録したでござる');
-            }  
-        }
-
-        
-        return view('foodComponent/index',[
-            'food'=>$food,
-            'foodComponents'=>$foodComponents,
-            'foodComponentId'=>$foodComponentId
-        ]);
-
-    }
 }

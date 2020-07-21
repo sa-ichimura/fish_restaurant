@@ -8,23 +8,16 @@
             <div class="col-sm">
                 <h2>{{$food->name}}</h2>    
             </div>
+
         <div class="col-sm">
             <example-component　v-bind:food-id="{{ $food->id }}" v-bind:user-id="{{ $userId }}" ></example-component>
-            <form action="{{ url('/component/comparison')}}" method="POST">
-                {{csrf_field() }}
-                <input type="hidden" name='food_id' value = '{{$food->id}}'>
-                @foreach($foodComponents as $component)
-                <input type="hidden" name='compnent' value = '{{$component->id}}'>
-                @endforeach
-                
-                <div><input type="submit" name="add"></div>
-            </form>
-            @if(Session::has('message'))
-  メッセージ：{{ session('message') }}
-@endif
         </div>
-    </div>
+        @if ($comparisonComent=='1')
+        <div  class="alert alert-primary" role="alert">比較リストに追加済み</div>
+        @endif
+    </div> 
 
+ 
 
 
     <div class="row">
