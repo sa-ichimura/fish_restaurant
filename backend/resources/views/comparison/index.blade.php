@@ -1,6 +1,7 @@
 @extends('layouts.common')
 @section('content')
 <div class="row">
+    @if ($foodComponentsCount > 0)
     @foreach ($componentGraphDatas as $componentGraphData)
     <div class="col-lg-4 col-sm-6 comparison-{{$componentGraphData['comparison']->id}}">
 <delete-component 
@@ -46,6 +47,12 @@
 
   
     @endforeach
+    @else
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">比較するデータがありません</h4>
+        商品ページの【比較】ボタンを押してください
+      </div>
+    @endif
 </div>
 
 @endsection
