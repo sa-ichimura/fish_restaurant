@@ -23,7 +23,8 @@
 export default {
     props:[
         'userId',
-        'foodId'
+        'foodId',
+        'comparisonComentCheck'
     ],
   data:function(){
     return {

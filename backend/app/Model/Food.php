@@ -17,4 +17,9 @@ class Food extends Model
     {
         return $this->belongsToMany(FoodCategory::class);
     }
+
+    public function comparisons()
+    {
+        return $this->hasMany('App\Model\Comparison');
+    }
 }

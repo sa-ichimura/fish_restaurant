@@ -34,7 +34,6 @@ class FoodComponentController extends Controller
             }
                
         }
-        dump($comparisonComent );
         return view('foodComponent/index',[
             'food'=>$food,
             'foodComponents'=>$foodComponents,
@@ -44,12 +43,14 @@ class FoodComponentController extends Controller
             'comparisonComent'=>$comparisonComent
         ]);
     }
-
+    /**
+     * 
+     */
     public function componentJson($foodComponents=null)
     {
-        $convetArray = '';
+        $convetArray = [];
         foreach($foodComponents as $foodComponent){
-            $convetArray= [
+            $convetArray[]= [
                 $foodComponent->protein,
                 $foodComponent->fat,
                 $foodComponent->fiber,
@@ -63,19 +64,22 @@ class FoodComponentController extends Controller
         
     }
 
-    public function componentConvet(array $convetArray){
-
-        foreach($convetArray as $key=>$convert){
-            $text = trim(mb_convert_kana($convert, 'as', 'UTF-8'));
-            $componentValue[] = floatval(preg_replace('/[^0-9a-zA-Z-.]/', '', $text));
-            $componentKey[]=$key;
+    public function componentConvet(array $convetArray)
+    {
+        foreach($convetArray as $value){
+            foreach($value as $key=>$convert){
+                $text = trim(mb_convert_kana($convert, 'as', 'UTF-8'));
+                $componentValue[] = floatval(preg_replace('/[^0-9a-zA-Z-.]/', '', $text));
+                $componentKey[]=$key;
+            }
+            $componentTotal = array_sum($componentValue);
+            $componentValue[6]=floatval(strval(100-$componentTotal));
+            $componentData[]=array_combine($componentKey,$componentValue);
         }
-        $componentTotal = array_sum($componentValue);
-        $componentValue[6]=floatval(strval(100-$componentTotal));
-        $componentData=array_combine($componentKey,$componentValue);
-        
-        return json_encode($componentData);
+        return $componentData;
     }
+
+
 
 
 
