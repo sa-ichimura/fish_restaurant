@@ -2,27 +2,20 @@
 //円グラフを表示するコーポネント
 import { Pie } from 'vue-chartjs'
 export default {
-  props:{
-    id:{
-      defolut:0,
-    },
-  },
+  props:[
+    "graphData"
+    ],
    extends:Pie,
-  async mounted(){
+  mounted(){
     const data = {
-      id:this.id
+      graphData:this.graphData
     }
-    const ret = await window.axios.post('/api/food_component/',data).then((ret)=>{
-                    
-                    this.data=ret.data
-                    //取得したデータをitemsに格納
-                })
     this.renderChart({
       labels: ['タンパク質','脂質','繊維','ミネラル','水分','リン','その他'],
       datasets: [{
         label: '成分表',
         backgroundColor: ['#FF367F', '#FF5F17', "#2DFF57",'#32EEFF', '#C9FF2F', "#C0C0C0"],
-        data: this.data,
+        data: this.graphData,
         options: {
           title: {
               display: true,

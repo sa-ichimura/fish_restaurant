@@ -38,7 +38,7 @@ class FoodComponentController extends Controller
             'food'=>$food,
             'foodComponents'=>$foodComponents,
             'foodComponentId'=>$foodComponentId,
-            'graphData'=>$graphData,
+            'graphData'=>json_encode($graphData[0]),
             'userId'=>$userId,
             'comparisonComent'=>$comparisonComent
         ]);

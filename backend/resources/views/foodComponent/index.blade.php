@@ -18,11 +18,9 @@
     </div> 
 
  
-
-
     <div class="row">
       <div class="col-sm">
-            <piechart-component :id="@json($food->id)"></piechart-component>
+            <piechart-component :graph-data="{{ ($graphData) }}"></piechart-component>
         </div>
       <div class="col-sm">
         <h3>材料</h3>
