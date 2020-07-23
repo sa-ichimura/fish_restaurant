@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post("/food_component","Api\FoodComponentController@index");
+Route::put("/food_component/{food}/{user}","Api\FoodComponentController@update");
+Route::put("/food_component/delete/{food}/{user}","Api\FoodComponentController@delete");

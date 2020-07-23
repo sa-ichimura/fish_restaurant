@@ -8,23 +8,19 @@
             <div class="col-sm">
                 <h2>{{$food->name}}</h2>    
             </div>
+
         <div class="col-sm">
-            <form action="">
-                <input type="hidden" name='food' value = '{{$food->id}}'>
-                @foreach($foodComponents as $component)
-                <input type="hidden" name='compnent' value = '{{$component->id}}'>
-                @endforeach
-                <button type="button" class="btn btn-primary">比較</button>
-                <button type="button" class="btn btn-primary">Primary</button>
-            </form>
+            <example-component　v-bind:food-id="{{ $food->id }}" v-bind:user-id="{{ $userId }}" v-bind:comparisonComent-check="{{ $comparisonComent }}" ></example-component>
         </div>
-    </div>
+        @if ($comparisonComent=='1')
+        <div  class="alert alert-primary" role="alert">比較リストに追加済み</div>
+        @endif
+    </div> 
 
-
-
+ 
     <div class="row">
-      <div class="col-sm" id="app">
-            <piechart-component :id="@json($food->id)"></piechart-component>
+      <div class="col-sm">
+            <piechart-component :graph-data="{{ ($graphData) }}"></piechart-component>
         </div>
       <div class="col-sm">
         <h3>材料</h3>

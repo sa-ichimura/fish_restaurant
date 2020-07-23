@@ -39,6 +39,28 @@ Build laravel development environment with docker-compose.
 - Base image
   - [mysql](https://hub.docker.com/_/mysql):8.0
 
+# TEST code
+## テスト実行コマンド
+- [mac] $ make test
+## テスト粒度
+UnitTest < FeatureTest < BrowserTest
+###  UnitTest
+- model
+- controller（アクションメソッド以外）
+自分で作成したクラス1つ1つに対応するように作成
+メソッドの動作を1つ1つ確認するテストコードを作成
+
+### FeatureTest
+- controller
+- Httpリクエスト
+ルーティングごとに作成
+コントローラーのアクションメソッド単位でのテスト
+
+### BrowserTest
+- ブラウザ画面でのテスト
+画面の操作をするテストコードを作成
+
+
 # fish_restaurant
 ## コンテナに入る
 - make app
@@ -55,8 +77,7 @@ Build laravel development environment with docker-compose.
 ### php artisan db:seed
 - [mac] $ make seed
 
-## テスト実行
-- [mac] $ make test
+
 
 ## MySQL接続
 - [mac] $ make mysql
