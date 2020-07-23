@@ -13,6 +13,11 @@ use App\User;
 class ComparisonController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request)
     {
         $foodComponents = [];
@@ -30,15 +35,10 @@ class ComparisonController extends Controller
         foreach($foodComponents as $key =>$foodComponent){
             $componentGraphDatas[$key]['foodComponent'] = $foodComponent;
             $componentGraphDatas[$key]['graphData'] =  $graphDatas[$key]; 
-            $componentGraphDatas[$key]['food'] =  $foods[$key]; 
-
-
+            $componentGraphDatas[$key]['food'] =  $foods[$key];
+            $componentGraphDatas[$key]['comparison'] =  $comparisons[$key];
         }
-        dump($componentGraphDatas);
-
         return view('comparison/index',[
-            'graphDatas'=>$graphDatas,
-            'foodComponents'=>$foodComponents,
             'componentGraphDatas'=>$componentGraphDatas
         ]);
     }

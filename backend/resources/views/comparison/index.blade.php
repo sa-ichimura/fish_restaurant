@@ -1,9 +1,14 @@
 @extends('layouts.common')
 @section('content')
 <div class="row">
-
     @foreach ($componentGraphDatas as $componentGraphData)
-    <div class="col-lg-4 col-sm-6 ">
+    <div class="col-lg-4 col-sm-6 comparison-{{$componentGraphData['comparison']->id}}">
+<delete-component 
+    :user = "{{ ($componentGraphData['comparison']->user_id) }}"
+    :food = "{{ ($componentGraphData['comparison']->food_id) }}"
+    :comparison = "{{$componentGraphData['comparison']->id}}"
+    ></delete-component>
+
             <piechart-component :graph-data="@json($componentGraphData['graphData'])"></piechart-component>
             <table class="table">
                 <tbody>
