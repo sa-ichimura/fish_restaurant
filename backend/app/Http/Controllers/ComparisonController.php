@@ -21,6 +21,7 @@ class ComparisonController extends Controller
     public function index(Request $request)
     {
         $foodComponents = [];
+        $componentGraphDatas =[];
         $comparisons = User::find(Auth::id())->comparisons;
         foreach($comparisons as $comparison){
             $foodComponents[] = FoodComponent::find($comparison->food_id);
@@ -28,7 +29,7 @@ class ComparisonController extends Controller
         }
        
         $FoodComponentController = app()->make('App\Http\Controllers\FoodComponentController');
-        if(count($foodComponents) > 0){
+        if(count($foodComponents) != 0){
             $graphDatas = $FoodComponentController->componentJson( $foodComponents );
             foreach($foodComponents as $key =>$foodComponent){
                 $componentGraphDatas[$key]['foodComponent'] = $foodComponent;
