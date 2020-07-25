@@ -23,17 +23,17 @@ jobs:
             pwd
             ls -a
             cd infrastructure
-            make remake
+            mkdir -p ./docker/php/bash/psysh
+            touch ./docker/php/bash/.bash_history
+            docker-compose up -d --build
+            docker-compose exec app composer install
  
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "composer.json" }}
-            - v1-dependencies-
- 
-              
-      - save_cache:
-          key: v1-dependencies-{{ checksum "composer.json" }}
-          paths:
-            - ./vendor
+      - run:
+          name: Setup Laravel
+          command: |
+            docker-compose exec app cp .env.example .env
+            docker-compose run app php artisan key:generate
+            docker-compose exec app php artisan storage:link
+            docker-compose run app php artisan migrate:refresh --seed
  
       - run: docker-compose exec app ./vendor/bin/phpunit
