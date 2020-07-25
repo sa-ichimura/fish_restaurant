@@ -11,19 +11,20 @@ use App\User;
 class ComparisonController extends TestCase
 {
     /**
-     * A basic feature test example.
+     * 未ログインの場合loginページに遷移
      *
      * @return void
      */
     public function test_not_login()
     {
-        //未ログインの場合loginページに遷移
         $notLoginResponse = $this->get('/comparison')->assertRedirect('/login');
         $notLoginResponse->assertStatus(302);
     }
 
     /**
      * ログイン済みの場合比較ページの表示を行う
+     * 
+     * @return void
      */
     public function test_login()
     {

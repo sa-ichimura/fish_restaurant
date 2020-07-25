@@ -92,5 +92,6 @@ migrate-fresh:
 	docker-compose exec app php artisan migrate:fresh
 unit-test:
 	docker-compose exec app ./vendor/bin/phpunit tests/Feature/ComparisonController.php
+	docker-compose exec app ./vendor/bin/phpunit tests/Feature/Api/FoodComponentControllerTest.php
 
 

@@ -43,9 +43,4 @@ class ComparisonController extends Controller
             'foodComponentsCount'=>count($foodComponents)
         ]);
     }
-
-
-    
-
-
 }
