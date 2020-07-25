@@ -13,27 +13,25 @@ jobs:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: true
           - MYSQL_DATABASE: laravel_local
- 
+    
     steps:
       - checkout
- 
-      - run: sudo apt update
-      - run: sudo docker-php-ext-install pdo_mysql
+
+      - run:
+          name: Setup docker
+          command: |
+            cd infrastructure/
+            make remake
  
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "composer.json" }}
             - v1-dependencies-
  
-      - run: composer install -n --prefer-dist
- 
+              
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
- 
-      - run: echo "APP_KEY=" > .env.testing
-      - run: docker-compose exec app php artisan key:generate
-      - run: docker-compose exec app php artisan migrate
  
       - run: docker-compose exec app ./vendor/bin/phpunit
