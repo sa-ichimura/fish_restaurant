@@ -45,6 +45,6 @@ class FoodComponentController extends Controller
     public function delete(Request $request,$user,$food)
     {
         $deletedRows = Comparison::where('user_id', $user)->where('food_id',$food)->delete();
-    
+        
     }
 }

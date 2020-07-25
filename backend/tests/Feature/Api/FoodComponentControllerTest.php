@@ -17,8 +17,23 @@ class FoodComponentControllerTest extends TestCase
      */
     public function test_comparison_data_set()
     {
+        $user = factory(User::class)->create();
+        $loginResponse = $this->actingAs($user)
+        ->withSession(['foo' => 'bar']);
+        $response = $this->put('/api/food_component/1'.'/'.$user->id);
+        $response->assertStatus(200);
+    }
+
+    /**
+     * 比較データを削除するAPI
+     *
+     * @return void
+     */
+    public function test_comparison_data_delete()
+    {   
         $Comparison = factory(Comparison::class)->create();
-        $response = $this->put('/api/food_component/'.$Comparison->food_id.'/'.$Comparison->user_id);
+        $url = "/api/food_component/delete/$Comparison->user_id/$Comparison->food_id";
+        $response = $this->put($url);
         $response->assertStatus(200);
     }
 }
