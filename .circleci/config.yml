@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Setup docker
           command: |
-            cd infrastructure/
+            cd /Applications/fish_restaurant/docker-laravel
             make remake
  
       - restore_cache:
