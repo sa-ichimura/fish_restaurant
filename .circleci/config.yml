@@ -20,6 +20,7 @@ jobs:
       - run:
           name: Setup docker
           command: |
+            pwd
             cd /Applications/fish_restaurant/docker-laravel
             make remake
  
