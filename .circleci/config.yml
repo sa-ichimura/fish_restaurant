@@ -20,11 +20,10 @@ jobs:
       - run:
           name: Setup docker
           command: |
-            pwd
-            ls -a
             cd infrastructure
             mkdir -p ./docker/php/bash/psysh
             touch ./docker/php/bash/.bash_history
+            ls -a
             docker-compose up -d --build
             docker-compose exec app composer install
  
