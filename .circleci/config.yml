@@ -56,6 +56,9 @@ jobs:
             ls
             pwd
             cd infrastructure
+            make build
             make up
-            make test
+            cd ../
+            make unit-test
+            make destroy
  
