@@ -23,7 +23,7 @@ jobs:
             - v1-dependencies-
       - run:
           name: Docker php extensions install
-          command: find / -name "*.json" -type d
+          command: ls -a /home/circleci/project
       - run:
           name: Install PHP libraries
           command: composer install -n --prefer-dist
