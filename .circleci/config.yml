@@ -22,11 +22,8 @@ jobs:
             - v1-dependencies-{{ checksum "composer.json" }}
             - v1-dependencies-
       - run:
-          name: Docker php extensions install
-          command: ls -a /home/circleci/project
-      - run:
           name: Install PHP libraries
-          command: composer install -n --prefer-dist
+          command: /home/circleci/project/backend composer install -n --prefer-dist
       - save_cache:
           paths:
             - ./vendor
