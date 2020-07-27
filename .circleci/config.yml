@@ -34,4 +34,5 @@ jobs:
           name: Run PHPUnit
           command: |
             cd /home/circleci/project/infrastructure
+            make up
             make unit-test
