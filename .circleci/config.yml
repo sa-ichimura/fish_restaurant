@@ -24,7 +24,6 @@ jobs:
       - run:
           name: Install PHP libraries
           command: |
-            pwd
             cd /home/circleci/project/backend
             composer install -n --prefer-dist
       - save_cache:
@@ -33,4 +32,6 @@ jobs:
           key: v1-dependencies-{{ checksum "/home/circleci/project/backend/composer.json" }}
       - run:
           name: Run PHPUnit
-          command: vendor/bin/phpunit
+          command: |
+            cd /home/circleci/project/infrastructure
+            make unit-test
