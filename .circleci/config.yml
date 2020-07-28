@@ -42,9 +42,9 @@ jobs:
           command: |
             cd /home/circleci/project/infrastructure/
             set -x
-            /usr/local/bin/docker-compose up --build -d
+            sudo /usr/local/bin/docker-compose up --build -d
       - run:
           name: Run PHPUnit
           command: |
-            /usr/local/bin/docker-compose exec app ./vendor/bin/phpunit
+            sudo /usr/local/bin/docker-compose exec app ./vendor/bin/phpunit
         
