@@ -12,5 +12,6 @@ jobs:
       - run:
           name: Run PHPUnit
           command: |
-            /usr/local/bin/docker-compose exec app ./vendor/bin/phpunit
+            cd /home/circleci/project/infrastructure
+            docker-compose exec app ./vendor/bin/phpunit
         
