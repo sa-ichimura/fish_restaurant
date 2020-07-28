@@ -9,43 +9,6 @@ jobs:
             name: docker-compose up
             command: |
                  docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml up -d
-
-      - run:
-          name: Update apt-get
-          command: sudo apt-get update
-      - run:
-          name: Docker php extensions install
-          command: sudo docker-php-ext-install pdo_mysql
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "/home/circleci/project/backend/composer.json" }}
-            - v1-dependencies-
-      - run:
-          name: Install PHP libraries
-          command: |
-            cd /home/circleci/project/backend
-            composer install -n --prefer-dist
-      - save_cache:
-          paths:
-            - ./vendor
-          key: v1-dependencies-{{ checksum "/home/circleci/project/backend/composer.json" }}
-      - run:
-          name: Install Docker Compose
-          command: |
-            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
-            sudo groupadd docker
-            sudo usermod -aG docker $USER
-            sudo chmod +x /usr/local/bin/docker-compose
-
-      - run:
-          name: docker-compose up
-          command: |
-            cd /home/circleci/project/infrastructure/
-            set -x
-            /usr/local/bin/docker-compose build
-            /usr/local/bin/docker-compose up
       - run:
           name: Run PHPUnit
           command: |
