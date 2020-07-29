@@ -8,7 +8,8 @@ jobs:
       - run:
             name: docker-compose up
             command: |
-                 docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml up -d
+                docker-compose build --no-cache --force-rm
+                docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml up -d
       - run:
           name: Run PHPUnit
           command: |
