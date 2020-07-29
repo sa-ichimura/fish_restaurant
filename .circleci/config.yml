@@ -15,10 +15,10 @@ jobs:
           command: |
             cd /home/circleci/project/infrastructure
             docker-compose ps 
-            docker-compose image
+            docker-compose images
 
             docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml ps
-            docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml image
+            docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml images
       - run:
           name: Run PHPUnit
           command: |
