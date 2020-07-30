@@ -10,7 +10,10 @@ jobs:
             command: |
               docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml up -d --build
       - run:
+            name: Install PHP libraries
+            command: /home/circleci/project/backend/composer install -n --prefer-dist
+      - run:
           name: Run PHPUnit
           command: |
-            docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app -c bash "pwd && cd vendor && pwd"
+            docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app ./vendor/bin/phpunit
         
