@@ -8,9 +8,9 @@ jobs:
       - run:
             name: docker-compose up
             command: |
-                docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml up -d --build
+              docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml up -d --build
       - run:
           name: Run PHPUnit
           command: |
-            docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec infrastructure_app_1 ./vendor/bin/phpunit
+            docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app ./vendor/bin/phpunit
         
