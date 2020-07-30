@@ -30,7 +30,8 @@ jobs:
       - run:
             name: migrate
             command: |
-              docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app php artisan migrate
+              docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app php artisan migrate　--force
+
     
       - run:
             name: seed
