@@ -12,5 +12,5 @@ jobs:
       - run:
           name: Run PHPUnit
           command: |
-            docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app pwd
+            docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app -c bash "pwd && cd vendor && pwd"
         
