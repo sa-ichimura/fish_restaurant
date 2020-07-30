@@ -12,13 +12,26 @@ jobs:
             name: docker-compose up
             command: |
               docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml up -d --build
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
+
       - run:
             name: composer install
             command: |
               docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app composer install --dev
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
+
       - run:
             name: migrate
             command: |
+
+              docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app php artisan key:generate
               docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app php artisan migrate
     
       - run:
