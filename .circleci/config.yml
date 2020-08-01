@@ -34,6 +34,7 @@ jobs:
       - run:
             name: migrate
             command: |
+              cp /home/circleci/project/backend/.env.example /home/circleci/project/backend/.env
               docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app php artisan key:generate --env=testing
               docker-compose -f /home/circleci/project/infrastructure/docker-compose.yml exec app php artisan migrate:fresh --seed --force
 
