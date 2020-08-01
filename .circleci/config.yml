@@ -30,7 +30,9 @@ jobs:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "/home/circleci/project/backend/composer.json" }}
-
+      - run:
+          name: Wait to ensure sql server becomes ready
+          command: sleep 60
       - run:
             name: migrate
             command: |
